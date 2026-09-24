@@ -12,9 +12,9 @@
     --accent: #b83b26;
     --button-hover: #942e1d;
     --button-text: #fff;
-    --code-bg: #17202b;
-    --code-text: #f4f6f8;
-    --code-accent: #ff866b;
+    --code-bg: #edf1f5;
+    --code-text: #17202b;
+    --code-accent: #b83b26;
     --tooltip-bg: #fff;
     --tooltip-text: #17202b;
     --focus: #b83b26;
@@ -192,7 +192,7 @@ button {
     display: block;
     min-height: 1.5em;
     padding: 14px;
-    background: var(--code-bg);
+    background: var(--surface);
     color: var(--code-text);
     border: 1px solid var(--border);
     border-radius: 8px;
