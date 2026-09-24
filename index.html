@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wikidot Date Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://community.wikidot.com/common--javascript/init.combined.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body id="html-body">
+<main class="container">
+    <h2>Wikidot Date Generator</h2>
+
+    <div class="group">
+        <label for="year">Set Date &amp; Time</label>
+        <div class="controls">
+            <select id="year" aria-label="Year"></select>
+            <select id="month" aria-label="Month"></select>
+            <select id="day" aria-label="Day"></select>
+            <span aria-hidden="true" style="color:var(--border-color); margin:0 5px;">|</span>
+            <select id="hour" aria-label="Hour"></select> : <select id="minute" aria-label="Minute"></select>
+            <button class="btn-now" id="now" type="button">NOW</button>
+        </div>
+    </div>
+
+    <div class="group">
+        <label for="format">Format String</label>
+        <input type="text" id="format" value="%Y. %m. %d|agohover" aria-describedby="error">
+        <div id="error" class="error" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="preview-box">
+        <label style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 6px; display: block;">PREVIEW</label>
+        <div id="preview-text" aria-live="polite"></div>
+    </div>
+
+    <div class="result-area">
+        <label>Wikidot Code</label>
+        <code class="code-display" id="result-code"></code>
+        <button class="btn-copy" id="copy" type="button">COPY TO CLIPBOARD</button>
+    </div>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
