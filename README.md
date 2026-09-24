@@ -1,5 +1,3 @@
-> **AI 사용 고지 / AI disclosure:** 이 프로젝트의 코드와 문서는 AI의 도움을 받아 작성·수정했습니다. The code and documentation in this project were written and revised with AI assistance.
-
 # Wikidot Date Wizard
 
 | [English](#en) | [한국어](#ko) | [日本語](#ja) | [简体中文](#zh-cn) | [Deutsch](#de) | [Français](#fr) | [Español](#es) |
