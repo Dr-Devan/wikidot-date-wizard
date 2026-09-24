@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wikidot Date Generator</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=8">
     <script src="https://community.wikidot.com/common--javascript/init.combined.js"></script>
-    <script src="script.js?v=6" defer></script>
+    <script src="script.js?v=8" defer></script>
 </head>
 <body id="html-body">
 <main class="container">
@@ -47,6 +47,39 @@
     <div class="group">
         <label class="label-with-icon" for="format"><span class="material-symbols-outlined" aria-hidden="true">tune</span><span id="format-label">Format String</span></label>
         <input type="text" id="format" value="%Y. %m. %d|agohover" aria-describedby="error">
+        <div class="format-tools" id="format-tools" role="group" aria-labelledby="format-label">
+            <div class="format-tool-row">
+                <span class="format-tool-label" id="date-tokens-label">Date</span>
+                <div class="format-token-buttons">
+                    <button class="format-token" type="button" data-token="%Y" data-key="yearFull">%Y</button>
+                    <button class="format-token" type="button" data-token="%y" data-key="yearShort">%y</button>
+                    <button class="format-token" type="button" data-token="%m" data-key="monthNumber">%m</button>
+                    <button class="format-token" type="button" data-token="%b" data-key="monthShort">%b</button>
+                    <button class="format-token" type="button" data-token="%B" data-key="monthFull">%B</button>
+                    <button class="format-token" type="button" data-token="%d" data-key="dayPadded">%d</button>
+                    <button class="format-token" type="button" data-token="%e" data-key="dayPlain">%e</button>
+                </div>
+            </div>
+            <div class="format-tool-row">
+                <span class="format-tool-label" id="time-tokens-label">Weekday &amp; time</span>
+                <div class="format-token-buttons">
+                    <button class="format-token" type="button" data-token="%a" data-key="weekdayShort">%a</button>
+                    <button class="format-token" type="button" data-token="%A" data-key="weekdayFull">%A</button>
+                    <button class="format-token" type="button" data-token="%H" data-key="hour24">%H</button>
+                    <button class="format-token" type="button" data-token="%I" data-key="hour12">%I</button>
+                    <button class="format-token" type="button" data-token="%M" data-key="minute">%M</button>
+                    <button class="format-token" type="button" data-token="%S" data-key="second">%S</button>
+                    <button class="format-token" type="button" data-token="%p" data-key="period">%p</button>
+                </div>
+            </div>
+            <div class="format-tool-row">
+                <span class="format-tool-label" id="relative-tokens-label">Relative</span>
+                <div class="format-token-buttons">
+                    <button class="format-token" type="button" data-token="%O" data-key="relative">%O</button>
+                    <button class="format-token" type="button" data-token="|agohover" data-key="hover" aria-pressed="true">|agohover</button>
+                </div>
+            </div>
+        </div>
         <div id="error" class="error" role="status" aria-live="polite"></div>
     </div>
 
