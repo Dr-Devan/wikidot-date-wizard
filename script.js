@@ -37,6 +37,19 @@ const translations = {
     }
 };
 
+const relativeTimeWords = {
+    ko: {
+        ago: '전', till: '후', day: '일', days: '일',
+        hour: '시간', hours: '시간', minute: '분', minutes: '분',
+        second: '초', seconds: '초'
+    },
+    ja: {
+        ago: '前', till: '後', day: '日', days: '日',
+        hour: '時間', hours: '時間', minute: '分', minutes: '分',
+        second: '秒', seconds: '秒'
+    }
+};
+
 const els = {
     year: document.getElementById('year'),
     month: document.getElementById('month'),
@@ -92,6 +105,10 @@ function setLanguage(next) {
     }
     els.language.setAttribute('aria-label', t.language);
     for (let i = 0; i < 12; i++) els.month.options[i].textContent = t.monthName(i + 1);
+    if (window.OZONE?.loc?.addMessages) {
+        if (relativeTimeWords[next]) OZONE.loc.addMessages(relativeTimeWords[next], next);
+        OZONE.lang = next;
+    }
     try { localStorage.setItem('wikidot-date-language', next); } catch { /* Storage may be disabled. */ }
     update();
 }
