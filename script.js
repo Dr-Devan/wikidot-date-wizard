@@ -140,6 +140,153 @@ function shortMonth(locale, month) {
     return new Intl.DateTimeFormat(locale, { month: 'short' }).format(new Date(2024, month - 1, 1));
 }
 
+const formatToolLabels = {
+    ko: {
+        groups: ['날짜', '요일·시간', '상대 시간'],
+        hints: {
+            yearFull: '연도 (4자리)', yearShort: '연도 (2자리)',
+            monthNumber: '월 (숫자)', monthShort: '월 이름 (축약)', monthFull: '월 이름 (전체)',
+            dayPadded: '일 (두 자리)', dayPlain: '일 (앞자리 0 없음)',
+            weekdayShort: '요일 (축약)', weekdayFull: '요일 (전체)',
+            hour24: '시 (24시간제)', hour12: '시 (12시간제)',
+            minute: '분', second: '초', period: '오전/오후',
+            relative: '상대 시간', hover: '호버 시 상대 시간 표시'
+        }
+    },
+    en: {
+        groups: ['Date', 'Weekday & time', 'Relative time'],
+        hints: {
+            yearFull: 'Year (4 digits)', yearShort: 'Year (2 digits)',
+            monthNumber: 'Month (number)', monthShort: 'Month name (short)', monthFull: 'Month name (full)',
+            dayPadded: 'Day (2 digits)', dayPlain: 'Day (no leading zero)',
+            weekdayShort: 'Weekday (short)', weekdayFull: 'Weekday (full)',
+            hour24: 'Hour (24-hour)', hour12: 'Hour (12-hour)',
+            minute: 'Minute', second: 'Second', period: 'AM/PM',
+            relative: 'Relative time', hover: 'Show relative time on hover'
+        }
+    },
+    ja: {
+        groups: ['日付', '曜日・時刻', '相対時間'],
+        hints: {
+            yearFull: '年（4桁）', yearShort: '年（2桁）',
+            monthNumber: '月（数字）', monthShort: '月名（省略形）', monthFull: '月名（完全形）',
+            dayPadded: '日（2桁）', dayPlain: '日（先頭の0なし）',
+            weekdayShort: '曜日（省略形）', weekdayFull: '曜日（完全形）',
+            hour24: '時（24時間制）', hour12: '時（12時間制）',
+            minute: '分', second: '秒', period: '午前／午後',
+            relative: '相対時間', hover: 'ホバー時に相対時間を表示'
+        }
+    },
+    'zh-CN': {
+        groups: ['日期', '星期与时间', '相对时间'],
+        hints: {
+            yearFull: '年份（4位）', yearShort: '年份（2位）',
+            monthNumber: '月份（数字）', monthShort: '月份名称（缩写）', monthFull: '月份名称（全称）',
+            dayPadded: '日期（2位）', dayPlain: '日期（不补零）',
+            weekdayShort: '星期（缩写）', weekdayFull: '星期（全称）',
+            hour24: '小时（24小时制）', hour12: '小时（12小时制）',
+            minute: '分钟', second: '秒', period: '上午／下午',
+            relative: '相对时间', hover: '悬停时显示相对时间'
+        }
+    },
+    da: {
+        groups: ['Dato', 'Ugedag og tid', 'Relativ tid'],
+        hints: {
+            yearFull: 'År (4 cifre)', yearShort: 'År (2 cifre)',
+            monthNumber: 'Måned (tal)', monthShort: 'Månedsnavn (kort)', monthFull: 'Månedsnavn (fuldt)',
+            dayPadded: 'Dag (2 cifre)', dayPlain: 'Dag (uden indledende nul)',
+            weekdayShort: 'Ugedag (kort)', weekdayFull: 'Ugedag (fuld)',
+            hour24: 'Time (24-timers ur)', hour12: 'Time (12-timers ur)',
+            minute: 'Minut', second: 'Sekund', period: 'AM/PM',
+            relative: 'Relativ tid', hover: 'Vis relativ tid ved museoverføring'
+        }
+    },
+    de: {
+        groups: ['Datum', 'Wochentag und Uhrzeit', 'Relative Zeit'],
+        hints: {
+            yearFull: 'Jahr (4 Stellen)', yearShort: 'Jahr (2 Stellen)',
+            monthNumber: 'Monat (Zahl)', monthShort: 'Monatsname (kurz)', monthFull: 'Monatsname (vollständig)',
+            dayPadded: 'Tag (2 Stellen)', dayPlain: 'Tag (ohne führende Null)',
+            weekdayShort: 'Wochentag (kurz)', weekdayFull: 'Wochentag (vollständig)',
+            hour24: 'Stunde (24-Stunden-Format)', hour12: 'Stunde (12-Stunden-Format)',
+            minute: 'Minute', second: 'Sekunde', period: 'AM/PM',
+            relative: 'Relative Zeit', hover: 'Relative Zeit beim Darüberfahren anzeigen'
+        }
+    },
+    es: {
+        groups: ['Fecha', 'Día y hora', 'Tiempo relativo'],
+        hints: {
+            yearFull: 'Año (4 dígitos)', yearShort: 'Año (2 dígitos)',
+            monthNumber: 'Mes (número)', monthShort: 'Nombre del mes (abreviado)', monthFull: 'Nombre del mes (completo)',
+            dayPadded: 'Día (2 dígitos)', dayPlain: 'Día (sin cero inicial)',
+            weekdayShort: 'Día de la semana (abreviado)', weekdayFull: 'Día de la semana (completo)',
+            hour24: 'Hora (formato de 24 horas)', hour12: 'Hora (formato de 12 horas)',
+            minute: 'Minuto', second: 'Segundo', period: 'AM/PM',
+            relative: 'Tiempo relativo', hover: 'Mostrar tiempo relativo al pasar el cursor'
+        }
+    },
+    fr: {
+        groups: ['Date', 'Jour et heure', 'Temps relatif'],
+        hints: {
+            yearFull: 'Année (4 chiffres)', yearShort: 'Année (2 chiffres)',
+            monthNumber: 'Mois (nombre)', monthShort: 'Nom du mois (abrégé)', monthFull: 'Nom du mois (complet)',
+            dayPadded: 'Jour (2 chiffres)', dayPlain: 'Jour (sans zéro initial)',
+            weekdayShort: 'Jour de la semaine (abrégé)', weekdayFull: 'Jour de la semaine (complet)',
+            hour24: 'Heure (format 24 h)', hour12: 'Heure (format 12 h)',
+            minute: 'Minute', second: 'Seconde', period: 'AM/PM',
+            relative: 'Temps relatif', hover: 'Afficher le temps relatif au survol'
+        }
+    },
+    it: {
+        groups: ['Data', 'Giorno e ora', 'Tempo relativo'],
+        hints: {
+            yearFull: 'Anno (4 cifre)', yearShort: 'Anno (2 cifre)',
+            monthNumber: 'Mese (numero)', monthShort: 'Nome del mese (abbreviato)', monthFull: 'Nome del mese (completo)',
+            dayPadded: 'Giorno (2 cifre)', dayPlain: 'Giorno (senza zero iniziale)',
+            weekdayShort: 'Giorno della settimana (abbreviato)', weekdayFull: 'Giorno della settimana (completo)',
+            hour24: 'Ora (formato 24 ore)', hour12: 'Ora (formato 12 ore)',
+            minute: 'Minuto', second: 'Secondo', period: 'AM/PM',
+            relative: 'Tempo relativo', hover: 'Mostra il tempo relativo al passaggio del cursore'
+        }
+    },
+    pl: {
+        groups: ['Data', 'Dzień tygodnia i czas', 'Czas względny'],
+        hints: {
+            yearFull: 'Rok (4 cyfry)', yearShort: 'Rok (2 cyfry)',
+            monthNumber: 'Miesiąc (liczba)', monthShort: 'Nazwa miesiąca (skrócona)', monthFull: 'Nazwa miesiąca (pełna)',
+            dayPadded: 'Dzień (2 cyfry)', dayPlain: 'Dzień (bez zera na początku)',
+            weekdayShort: 'Dzień tygodnia (skrócony)', weekdayFull: 'Dzień tygodnia (pełny)',
+            hour24: 'Godzina (format 24-godzinny)', hour12: 'Godzina (format 12-godzinny)',
+            minute: 'Minuta', second: 'Sekunda', period: 'AM/PM',
+            relative: 'Czas względny', hover: 'Pokaż czas względny po najechaniu'
+        }
+    },
+    ru: {
+        groups: ['Дата', 'День недели и время', 'Относительное время'],
+        hints: {
+            yearFull: 'Год (4 цифры)', yearShort: 'Год (2 цифры)',
+            monthNumber: 'Месяц (число)', monthShort: 'Название месяца (сокращённое)', monthFull: 'Название месяца (полное)',
+            dayPadded: 'День (2 цифры)', dayPlain: 'День (без ведущего нуля)',
+            weekdayShort: 'День недели (сокращённый)', weekdayFull: 'День недели (полный)',
+            hour24: 'Час (24-часовой формат)', hour12: 'Час (12-часовой формат)',
+            minute: 'Минута', second: 'Секунда', period: 'AM/PM',
+            relative: 'Относительное время', hover: 'Показывать относительное время при наведении'
+        }
+    },
+    sr: {
+        groups: ['Датум', 'Дан у недељи и време', 'Релативно време'],
+        hints: {
+            yearFull: 'Година (4 цифре)', yearShort: 'Година (2 цифре)',
+            monthNumber: 'Месец (број)', monthShort: 'Назив месеца (скраћен)', monthFull: 'Назив месеца (пун)',
+            dayPadded: 'Дан (2 цифре)', dayPlain: 'Дан (без водеће нуле)',
+            weekdayShort: 'Дан у недељи (скраћен)', weekdayFull: 'Дан у недељи (пун)',
+            hour24: 'Сат (24-часовни формат)', hour12: 'Сат (12-часовни формат)',
+            minute: 'Минут', second: 'Секунда', period: 'AM/PM',
+            relative: 'Релативно време', hover: 'Прикажи релативно време при преласку показивачем'
+        }
+    }
+};
+
 const relativeTimeWords = {
     ko: {
         ago: '전', till: '후', day: '일', days: '일',
@@ -205,6 +352,7 @@ const els = {
     hour: document.getElementById('hour'),
     minute: document.getElementById('minute'),
     format: document.getElementById('format'),
+    formatTools: document.getElementById('format-tools'),
     result: document.getElementById('result-code'),
     preview: document.getElementById('preview-text'),
     error: document.getElementById('error'),
@@ -214,6 +362,7 @@ const els = {
 };
 
 let language = 'en';
+let hasFormatSelection = false;
 
 function init() {
     for (let i = 1900; i <= 2100; i++) els.year.add(new Option(i, i));
@@ -226,7 +375,15 @@ function init() {
         update();
     };
     els.day.onchange = els.hour.onchange = els.minute.onchange = update;
-    els.format.oninput = update;
+    els.format.oninput = () => {
+        update();
+        syncHoverButton();
+    };
+    els.format.addEventListener('focus', () => { hasFormatSelection = true; });
+    els.formatTools.onclick = event => {
+        const button = event.target.closest('button[data-token]');
+        if (button) insertFormatToken(button.dataset.token);
+    };
     document.getElementById('now').onclick = setNow;
     els.copy.onclick = copyToClipboard;
     els.language.onchange = () => setLanguage(els.language.value);
@@ -251,6 +408,15 @@ function setLanguage(next) {
         'code-label': t.code, 'copy-label': t.copy, 'now-label': t.now
     };
     for (const [id, value] of Object.entries(labels)) document.getElementById(id).textContent = value;
+    const toolLabels = formatToolLabels[next];
+    for (const [index, id] of ['date-tokens-label', 'time-tokens-label', 'relative-tokens-label'].entries()) {
+        document.getElementById(id).textContent = toolLabels.groups[index];
+    }
+    for (const button of els.formatTools.querySelectorAll('button[data-token]')) {
+        const description = toolLabels.hints[button.dataset.key];
+        button.title = description;
+        button.setAttribute('aria-label', `${description} (${button.dataset.token})`);
+    }
     for (const field of ['year', 'month', 'day', 'hour', 'minute']) {
         els[field].setAttribute('aria-label', t[field]);
     }
@@ -262,6 +428,30 @@ function setLanguage(next) {
     }
     try { localStorage.setItem('wikidot-date-language', next); } catch { /* Storage may be disabled. */ }
     update();
+}
+
+function syncHoverButton() {
+    const button = els.formatTools.querySelector('[data-token="|agohover"]');
+    button.setAttribute('aria-pressed', String(els.format.value.includes('|agohover')));
+}
+
+function insertFormatToken(token) {
+    const value = els.format.value;
+    if (token === '|agohover') {
+        const enabled = value.includes(token);
+        els.format.value = value.replaceAll(token, '') + (enabled ? '' : token);
+        els.format.setSelectionRange(els.format.value.length, els.format.value.length);
+    } else {
+        let start = hasFormatSelection ? els.format.selectionStart : value.length;
+        let end = hasFormatSelection ? els.format.selectionEnd : value.length;
+        const hoverStart = value.indexOf('|agohover');
+        if (start === end && hoverStart !== -1 && start >= hoverStart) {
+            start = end = hoverStart;
+        }
+        els.format.setRangeText(token, start, end, 'end');
+    }
+    els.format.focus();
+    els.format.dispatchEvent(new Event('input', { bubbles: true }));
 }
 
 function setNow() {
