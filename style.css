@@ -3,42 +3,42 @@
 
 :root {
     color-scheme: light;
-    --surface: #fff;
-    --surface-subtle: #f5f7fa;
+    --surface: #faf9f6;
+    --surface-subtle: #f0eee9;
     --input-bg: #fff;
-    --text-main: #172635;
-    --text-muted: #4b5b6a;
-    --border: #c7d0da;
-    --accent: #3977a4;
-    --code-text: #175c87;
-    --button-bg: #263e55;
-    --button-hover: #344f69;
+    --text-main: #242923;
+    --text-muted: #4d5a4e;
+    --border: #b8c1b6;
+    --accent: #547258;
+    --code-text: #36563e;
+    --button-bg: #365d44;
+    --button-hover: #294c36;
     --button-text: #fff;
-    --tooltip-bg: #fff;
-    --tooltip-text: #172635;
-    --tooltip-border: #8999a9;
-    --focus: #1475ad;
-    --shadow: 0 4px 15px rgba(18, 38, 56, 0.08);
+    --tooltip-bg: #fffdf8;
+    --tooltip-text: #242923;
+    --tooltip-border: #97a493;
+    --focus: #365d44;
+    --shadow: 0 4px 15px rgba(36, 41, 35, 0.08);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         color-scheme: dark;
-        --surface: #20262d;
-        --surface-subtle: #29313a;
-        --input-bg: #171d23;
-        --text-main: #f1f5f9;
-        --text-muted: #bdcbd8;
-        --border: #677888;
-        --accent: #7ebce9;
-        --code-text: #a5d3f8;
-        --button-bg: #38566e;
-        --button-hover: #496982;
-        --button-text: #fff;
-        --tooltip-bg: #14212b;
-        --tooltip-text: #f5f9fc;
-        --tooltip-border: #7790a2;
-        --focus: #a1d7ff;
+        --surface: #1e241f;
+        --surface-subtle: #2a322b;
+        --input-bg: #202820;
+        --text-main: #f1f4ed;
+        --text-muted: #bfccbd;
+        --border: #718271;
+        --accent: #a9c9aa;
+        --code-text: #c9e8c9;
+        --button-bg: #b7d6b6;
+        --button-hover: #cbe5c9;
+        --button-text: #17251a;
+        --tooltip-bg: #303b32;
+        --tooltip-text: #f3f7f0;
+        --tooltip-border: #91ac94;
+        --focus: #c9e9ca;
         --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     }
 }
@@ -64,6 +64,7 @@ body {
 
 .header {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
     gap: 16px;
@@ -232,6 +233,6 @@ select:focus-visible, input:focus-visible, button:focus-visible {
 @media (max-width: 480px) {
     .container { padding: 16px; }
     .header { align-items: flex-start; }
-    .language-control { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .language-control { flex-direction: column; align-items: flex-start; gap: 4px; margin-left: auto; }
     .controls { gap: 6px; }
 }
