@@ -2,7 +2,7 @@
 
 # Wikidot Date Wizard
 
-날짜와 시간을 선택해 Wikidot의 `[[date]]` 코드를 생성하는 브라우저 도구입니다. 미리보기에는 Wikidot의 `OZONE.utils.formatOdate()`를 사용하므로 `%O`, `%b`, `|agohover` 등의 포맷을 별도로 재구현하지 않습니다.
+날짜와 시간을 선택해 Wikidot의 `[[date]]` 코드를 생성하는 브라우저 도구입니다. 미리보기에는 Wikidot의 `OZONE.utils.formatOdate()`를 사용합니다.
 
 ## 사용법
 
@@ -18,6 +18,6 @@
 
 ## 출처 및 라이선스
 
-ErichSteinboeck이 2008년에 공개한 [Wikidot Community Date Wizard](https://community.wikidot.com/howto:date-how-long-ago)를 바탕으로 만든 수정판입니다. 원본 페이지는 [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/)로 제공됩니다. 입력 UI와 날짜 목록을 현대화하고, 자체 날짜 포맷 흉내내기를 제거했으며, Wikidot 렌더러를 직접 호출하도록 변경했습니다.
+ErichSteinboeck이 2008년에 공개한 [Wikidot Community Date Wizard](https://community.wikidot.com/howto:date-how-long-ago)를 바탕으로 만든 수정판입니다. 원본 페이지는 [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/)로 제공됩니다. 원본과 비교해 선택 가능한 연도를 1900~2100년으로 확장하고, NOW 버튼·코드 복사 버튼·다크 모드·입력 검증을 추가했습니다. 날짜나 format을 바꾸면 미리보기를 다시 렌더링하도록 수정했습니다.
 
 이 수정판의 코드는 [CC BY-SA 4.0 International](LICENSE)로 배포합니다. Wikidot에서 외부로 불러오는 JavaScript와 CSS는 이 저장소에 포함되지 않으며 각각의 원래 조건이 적용됩니다.
