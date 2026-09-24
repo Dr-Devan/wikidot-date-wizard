@@ -21,6 +21,7 @@ Wikidot Date Wizard는 날짜와 시간을 선택해 Wikidot의 `[[date]]` 코�
 `index.html`을 웹 서버에서 열고 날짜·시간과 format 문자열을 입력한 뒤 코드를 복사해 Wikidot 페이지에 붙여 넣습니다. 날짜와 시간은 **도구를 실행하는 브라우저의 현지 시간대**를 기준으로 Unix timestamp로 변환합니다.
 
 - format을 비우면 `[[date 1234567890]]`처럼 `format` 속성 없이 생성합니다.
+- 표시 형식 아래의 구문 버튼을 누르면 커서 위치에 삽입됩니다. `|agohover` 버튼은 호버 시 상대시간 표시를 켜거나 끕니다.
 - 한국어·영어·일본어·중국어(간체)·덴마크어·독일어·스페인어·프랑스어·이탈리아어·폴란드어·러시아어·세르비아어 UI를 지원합니다. 처음에는 브라우저 언어를 따르고, 언어 선택 메뉴에서 변경하면 선택이 저장됩니다.
 - 상대시간과 hover 문구의 단위는 Wikidot의 번역 기능으로 표시합니다. 그 외 날짜 포맷과 단·복수 처리 방식은 Wikidot 렌더러를 따릅니다.
 - format 값은 Wikidot 렌더러에 그대로 전달합니다. [Wikidot 날짜 문법](https://community.wikidot.com/howto:date-how-long-ago)의 예: `%e %b %Y, %H:%M %Z|agohover`, `%O`.
@@ -52,6 +53,7 @@ Wikidot Date Wizard is a browser tool for generating Wikidot `[[date]]` code fro
 Open `index.html` through a web server, select a date and time, enter a format string, and copy the generated code into a Wikidot page. The timestamp is calculated using **the browser's local time zone**.
 
 - Leave the format field empty to generate code without a `format` attribute, such as `[[date 1234567890]]`.
+- Click a format button below the field to insert its token at the cursor. The `|agohover` button toggles the relative-time hover text.
 - The interface supports Korean, English, Japanese, Simplified Chinese, Danish, German, Spanish, French, Italian, Polish, Russian, and Serbian. It initially follows the browser language; changes made with the language selector are saved.
 - Relative-time units and hover text are displayed through Wikidot's translation functions. Other date formatting and singular/plural behavior follow the Wikidot renderer.
 - The format value is passed directly to the Wikidot renderer. Examples from the [Wikidot date syntax guide](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` and `%O`.
@@ -83,6 +85,7 @@ Wikidot Date Wizard は、選択した日時から Wikidot の `[[date]]` コー
 Web サーバー経由で `index.html` を開き、日時と書式文字列を入力して、生成されたコードを Wikidot のページに貼り付けます。Unix タイムスタンプへの変換には、**ツールを開いているブラウザーのローカルタイムゾーン**を使用します。
 
 - 書式欄を空にすると、`[[date 1234567890]]` のように `format` 属性なしで生成します。
+- 表示形式の下にあるボタンを押すと、カーソル位置に書式記号が挿入されます。`|agohover` ボタンでホバー時の相対時間表示を切り替えられます。
 - UI は韓国語、英語、日本語、簡体字中国語、デンマーク語、ドイツ語、スペイン語、フランス語、イタリア語、ポーランド語、ロシア語、セルビア語に対応しています。初回はブラウザーの言語を使用し、言語メニューで変更すると選択が保存されます。
 - 相対時間の単位とホバー時の文言には Wikidot の翻訳機能を使用します。そのほかの日付書式や単数・複数の処理は Wikidot のレンダラーに従います。
 - 書式文字列はそのまま Wikidot のレンダラーに渡されます。[Wikidot の日付書式ガイド](https://community.wikidot.com/howto:date-how-long-ago)にある例：`%e %b %Y, %H:%M %Z|agohover`、`%O`。
@@ -114,6 +117,7 @@ Wikidot Date Wizard 是一款浏览器工具，可根据所选日期和时间生
 通过 Web 服务器打开 `index.html`，选择日期和时间、输入格式字符串，然后将生成的代码复制到 Wikidot 页面。转换 Unix 时间戳时使用**运行本工具的浏览器所在时区**。
 
 - 格式栏留空时，将生成不带 `format` 属性的代码，例如 `[[date 1234567890]]`。
+- 点击格式栏下方的按钮，可在光标位置插入对应的格式符。`|agohover` 按钮可切换悬停时的相对时间提示。
 - 界面支持韩语、英语、日语、简体中文、丹麦语、德语、西班牙语、法语、意大利语、波兰语、俄语和塞尔维亚语。首次使用时采用浏览器语言；通过语言菜单更改后，所选语言会被保存。
 - 相对时间的单位和悬停提示文字通过 Wikidot 的翻译功能显示。其他日期格式及单复数处理遵循 Wikidot 渲染器。
 - 格式字符串会直接传给 Wikidot 渲染器。[Wikidot 日期语法说明](https://community.wikidot.com/howto:date-how-long-ago)中的示例：`%e %b %Y, %H:%M %Z|agohover`、`%O`。
@@ -145,6 +149,7 @@ Wikidot Date Wizard er et browserværktøj, der genererer Wikidot-koden `[[date]
 Åbn `index.html` via en webserver, vælg dato og klokkeslæt, indtast en formatstreng, og indsæt den genererede kode på en Wikidot-side. Unix-tidsstemplet beregnes ud fra **den lokale tidszone i den browser, der kører værktøjet**.
 
 - Hvis formatfeltet er tomt, genereres kode uden attributten `format`, f.eks. `[[date 1234567890]]`.
+- Klik på en formatknap under feltet for at indsætte dens kode ved markøren. Knappen `|agohover` slår visning af relativ tid ved museoverføring til eller fra.
 - Brugerfladen understøtter koreansk, engelsk, japansk, forenklet kinesisk, dansk, tysk, spansk, fransk, italiensk, polsk, russisk og serbisk. Først bruges browserens sprog; ændringer i sprogmenuen gemmes.
 - Enheder i relative tidsangivelser og tekst ved museoverføring vises med Wikidots oversættelsesfunktioner. Anden datoformatering og håndtering af ental og flertal følger Wikidots renderer.
 - Formatstrengen sendes uændret til Wikidots renderer. Eksempler fra [Wikidots vejledning til datosyntaks](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` og `%O`.
@@ -176,6 +181,7 @@ Wikidot Date Wizard ist ein Browserwerkzeug, das aus einem gewählten Datum und 
 Öffne `index.html` über einen Webserver, wähle Datum und Uhrzeit, gib eine Formatzeichenfolge ein und füge den erzeugten Code in eine Wikidot-Seite ein. Der Unix-Zeitstempel wird anhand **der lokalen Zeitzone des verwendeten Browsers** berechnet.
 
 - Bei leerem Formatfeld wird Code ohne `format`-Attribut erzeugt, etwa `[[date 1234567890]]`.
+- Mit den Formatschaltflächen unter dem Feld fügst du die jeweilige Zeichenfolge an der Cursorposition ein. Die Schaltfläche `|agohover` schaltet den relativen Zeittext beim Darüberfahren ein oder aus.
 - Die Oberfläche unterstützt Koreanisch, Englisch, Japanisch, vereinfachtes Chinesisch, Dänisch, Deutsch, Spanisch, Französisch, Italienisch, Polnisch, Russisch und Serbisch. Zunächst wird die Browsersprache verwendet; eine Änderung im Sprachmenü wird gespeichert.
 - Einheiten für relative Zeitangaben und Texte beim Darüberfahren mit der Maus werden über Wikidots Übersetzungsfunktionen angezeigt. Sonstige Datumsformatierungen sowie Singular- und Pluralformen richten sich nach dem Wikidot-Renderer.
 - Die Formatzeichenfolge wird unverändert an den Wikidot-Renderer übergeben. Beispiele aus der [Wikidot-Datumssyntax](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` und `%O`.
@@ -207,6 +213,7 @@ Wikidot Date Wizard es una herramienta para el navegador que genera código `[[d
 Abre `index.html` desde un servidor web, selecciona la fecha y la hora, introduce una cadena de formato y pega el código generado en una página de Wikidot. La marca de tiempo Unix se calcula según **la zona horaria local del navegador en el que se utiliza la herramienta**.
 
 - Si dejas vacío el campo de formato, se genera código sin el atributo `format`, como `[[date 1234567890]]`.
+- Pulsa un botón de formato debajo del campo para insertar su código en la posición del cursor. El botón `|agohover` activa o desactiva el tiempo relativo al pasar el cursor.
 - La interfaz está disponible en coreano, inglés, japonés, chino simplificado, danés, alemán, español, francés, italiano, polaco, ruso y serbio. Al principio usa el idioma del navegador; si lo cambias en el selector, la elección se guarda.
 - Las unidades de tiempo relativo y los textos que aparecen al pasar el cursor se muestran mediante las funciones de traducción de Wikidot. Los demás formatos de fecha y el tratamiento de singular y plural dependen del renderizador de Wikidot.
 - La cadena de formato se envía directamente al renderizador de Wikidot. Ejemplos de la [guía de sintaxis de fechas de Wikidot](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` y `%O`.
@@ -238,6 +245,7 @@ Wikidot Date Wizard est un outil pour navigateur qui génère du code Wikidot `[
 Ouvrez `index.html` depuis un serveur web, choisissez la date et l'heure, saisissez une chaîne de format, puis collez le code généré dans une page Wikidot. L'horodatage Unix est calculé selon **le fuseau horaire local du navigateur utilisé**.
 
 - Si le champ de format est vide, le code est généré sans attribut `format`, par exemple `[[date 1234567890]]`.
+- Cliquez sur un bouton sous le champ de format pour insérer sa séquence à la position du curseur. Le bouton `|agohover` active ou désactive l’affichage du temps relatif au survol.
 - L'interface prend en charge le coréen, l'anglais, le japonais, le chinois simplifié, le danois, l'allemand, l'espagnol, le français, l'italien, le polonais, le russe et le serbe. Elle utilise d'abord la langue du navigateur ; un changement effectué dans le sélecteur de langue est enregistré.
 - Les unités de temps relatif et les textes affichés au survol utilisent les fonctions de traduction de Wikidot. Les autres formats de date et la gestion du singulier et du pluriel suivent le moteur de rendu de Wikidot.
 - La chaîne de format est transmise directement au moteur de rendu de Wikidot. Exemples tirés du [guide de syntaxe des dates de Wikidot](https://community.wikidot.com/howto:date-how-long-ago) : `%e %b %Y, %H:%M %Z|agohover` et `%O`.
@@ -269,6 +277,7 @@ Wikidot Date Wizard è uno strumento per browser che genera il codice Wikidot `[
 Apri `index.html` tramite un server web, seleziona data e ora, inserisci una stringa di formato e incolla il codice generato in una pagina Wikidot. Il timestamp Unix viene calcolato in base **al fuso orario locale del browser in cui si usa lo strumento**.
 
 - Se il campo del formato è vuoto, il codice viene generato senza l'attributo `format`, per esempio `[[date 1234567890]]`.
+- Premi un pulsante sotto il campo del formato per inserire il relativo codice nella posizione del cursore. Il pulsante `|agohover` attiva o disattiva il tempo relativo al passaggio del cursore.
 - L'interfaccia supporta coreano, inglese, giapponese, cinese semplificato, danese, tedesco, spagnolo, francese, italiano, polacco, russo e serbo. Inizialmente usa la lingua del browser; le modifiche effettuate nel selettore della lingua vengono salvate.
 - Le unità del tempo relativo e i testi mostrati al passaggio del cursore usano le funzioni di traduzione di Wikidot. Gli altri formati di data e la gestione del singolare e del plurale seguono il renderer di Wikidot.
 - La stringa di formato viene passata direttamente al renderer di Wikidot. Esempi dalla [guida alla sintassi delle date di Wikidot](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` e `%O`.
@@ -300,6 +309,7 @@ Wikidot Date Wizard to narzędzie przeglądarkowe generujące kod Wikidot `[[dat
 Otwórz `index.html` przez serwer WWW, wybierz datę i godzinę, wpisz ciąg formatujący, a następnie wklej wygenerowany kod na stronie Wikidot. Znacznik czasu Unix jest obliczany według **lokalnej strefy czasowej przeglądarki, w której działa narzędzie**.
 
 - Puste pole formatu powoduje wygenerowanie kodu bez atrybutu `format`, np. `[[date 1234567890]]`.
+- Kliknij przycisk pod polem formatu, aby wstawić odpowiedni kod w miejscu kursora. Przycisk `|agohover` włącza lub wyłącza czas względny po najechaniu kursorem.
 - Interfejs obsługuje język koreański, angielski, japoński, chiński uproszczony, duński, niemiecki, hiszpański, francuski, włoski, polski, rosyjski i serbski. Początkowo używany jest język przeglądarki; zmiana w menu języków zostaje zapisana.
 - Jednostki czasu względnego i tekst po najechaniu kursorem są wyświetlane przez funkcje tłumaczeniowe Wikidot. Pozostałe formatowanie dat oraz obsługa liczby pojedynczej i mnogiej zależą od renderera Wikidot.
 - Ciąg formatujący jest przekazywany bez zmian do renderera Wikidot. Przykłady z [opisu składni dat Wikidot](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` i `%O`.
@@ -331,6 +341,7 @@ Wikidot Date Wizard — браузерный инструмент для соз�
 Откройте `index.html` через веб-сервер, выберите дату и время, введите строку формата и вставьте созданный код на страницу Wikidot. Временная метка Unix вычисляется с учётом **локального часового пояса браузера, в котором открыт инструмент**.
 
 - Если оставить поле формата пустым, код будет создан без атрибута `format`, например `[[date 1234567890]]`.
+- Нажмите кнопку под полем формата, чтобы вставить соответствующий код в месте курсора. Кнопка `|agohover` включает или отключает показ относительного времени при наведении.
 - Интерфейс поддерживает корейский, английский, японский, упрощённый китайский, датский, немецкий, испанский, французский, итальянский, польский, русский и сербский языки. Сначала используется язык браузера; выбор другого языка в меню сохраняется.
 - Единицы относительного времени и текст всплывающей подсказки выводятся с помощью функций перевода Wikidot. Остальное форматирование дат и обработка единственного и множественного числа зависят от рендерера Wikidot.
 - Строка формата передаётся рендереру Wikidot без изменений. Примеры из [руководства по синтаксису дат Wikidot](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` и `%O`.
@@ -362,6 +373,7 @@ Wikidot Date Wizard је алат за прегледач који генери�
 Отворите `index.html` преко веб-сервера, изаберите датум и време, унесите ниску формата и налепите генерисани код на Wikidot страницу. Unix временска ознака израчунава се према **локалној временској зони прегледача у којем је алат отворен**.
 
 - Ако је поље формата празно, генерише се код без атрибута `format`, на пример `[[date 1234567890]]`.
+- Притисните дугме испод поља формата да уметнете одговарајући код на место курсора. Дугме `|agohover` укључује или искључује приказ релативног времена при преласку показивачем.
 - Интерфејс подржава корејски, енглески, јапански, поједностављени кинески, дански, немачки, шпански, француски, италијански, пољски, руски и српски. У почетку се користи језик прегледача; промена у менију за језик се чува.
 - Јединице релативног времена и текст при преласку показивачем приказују се помоћу Wikidot функција за превод. Остало форматирање датума и обрада једнине и множине зависе од Wikidot рендерера.
 - Ниска формата се без измена прослеђује Wikidot рендереру. Примери из [водича за синтаксу датума на Wikidot-у](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` и `%O`.
