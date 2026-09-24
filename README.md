@@ -2,24 +2,222 @@
 
 # Wikidot Date Wizard
 
-날짜와 시간을 선택해 Wikidot의 `[[date]]` 코드를 생성하는 브라우저 도구입니다. 미리보기에는 Wikidot의 `OZONE.utils.formatOdate()`를 사용합니다.
+| [English](#en) | [한국어](#ko) | [日本語](#ja) | [简体中文](#zh-cn) | [Deutsch](#de) | [Français](#fr) | [Español](#es) |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
-## 사용법
+---
 
-`index.html`을 웹 서버에서 열고 날짜·시간과 format 문자열을 입력한 뒤 코드를 복사합니다. 생성된 코드를 Wikidot 페이지에 붙여 넣으면 됩니다. 날짜와 시간은 **도구를 실행하는 브라우저의 현지 시간대**를 기준으로 Unix timestamp로 변환합니다.
+<a id="en"></a>
+## English
 
-- format을 비우면 `[[date 1234567890]]`처럼 format 속성 없이 생성합니다.
-- 한국어·영어·일본어·중국어(간체)·덴마크어·독일어·스페인어·프랑스어·이탈리아어·폴란드어·러시아어·세르비아어 UI를 지원합니다. 처음에는 브라우저 언어를 따르고, 오른쪽 위에서 언어를 변경하면 선택이 저장됩니다.
+> **AI disclosure:** The code and documentation in this project were written and revised with AI assistance.
+
+### Overview
+
+Wikidot Date Wizard is a browser tool for generating Wikidot `[[date]]` code from a selected date and time. Its preview uses Wikidot's `OZONE.utils.formatOdate()`.
+
+### Usage
+
+Open `index.html` through a web server, select a date and time, enter a format string, and copy the generated code into a Wikidot page. The timestamp is calculated using **the browser's local time zone**.
+
+- Leave the format field empty to generate code without a `format` attribute, such as `[[date 1234567890]]`.
+- The interface supports Korean, English, Japanese, Simplified Chinese, Danish, German, Spanish, French, Italian, Polish, Russian, and Serbian. It initially follows the browser language; changes made with the language selector are saved.
+- Relative-time units and hover text are displayed through Wikidot's translation functions. Other date formatting and singular/plural behavior follow the Wikidot renderer.
+- The format value is passed directly to the Wikidot renderer. Examples from the [Wikidot date syntax guide](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` and `%O`.
+- Double quotes cannot be used in the format field because they would break the generated Wikidot attribute.
+- Wikidot's date renderer does not display dates before 1970. The code is still generated, but the preview remains empty and a warning appears.
+- The preview loads external Wikidot JavaScript and CSS. It will not work if those resources are unavailable because of a network or Wikidot server problem.
+
+No build step or package installation is required. To publish with GitHub Pages, select the root (`/`) of the `main` branch as the publishing source in the repository's Pages settings.
+
+### Attribution and license
+
+This project is adapted from the [Wikidot Community Date Wizard](https://community.wikidot.com/howto:date-how-long-ago) published by ErichSteinboeck in 2008 under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Compared with that original, it extends the year range to 1900–2100 and adds a Now button, a copy button, dark mode, and input validation. The preview is refreshed when the date or format changes.
+
+The code in this adaptation is licensed under [CC BY-SA 4.0 International](LICENSE). External Wikidot JavaScript and CSS are not included in this repository and remain subject to their own terms.
+
+---
+
+<a id="ko"></a>
+## 한국어
+
+> **AI 사용 고지:** 이 프로젝트의 코드와 문서는 AI의 도움을 받아 작성·수정했습니다.
+
+### 소개
+
+Wikidot Date Wizard는 날짜와 시간을 선택해 Wikidot의 `[[date]]` 코드를 생성하는 브라우저 도구입니다. 미리보기에는 Wikidot의 `OZONE.utils.formatOdate()`를 사용합니다.
+
+### 사용법
+
+`index.html`을 웹 서버에서 열고 날짜·시간과 format 문자열을 입력한 뒤 코드를 복사해 Wikidot 페이지에 붙여 넣습니다. 날짜와 시간은 **도구를 실행하는 브라우저의 현지 시간대**를 기준으로 Unix timestamp로 변환합니다.
+
+- format을 비우면 `[[date 1234567890]]`처럼 `format` 속성 없이 생성합니다.
+- 한국어·영어·일본어·중국어(간체)·덴마크어·독일어·스페인어·프랑스어·이탈리아어·폴란드어·러시아어·세르비아어 UI를 지원합니다. 처음에는 브라우저 언어를 따르고, 언어 선택 메뉴에서 변경하면 선택이 저장됩니다.
 - 상대시간과 hover 문구의 단위는 Wikidot의 번역 기능으로 표시합니다. 그 외 날짜 포맷과 단·복수 처리 방식은 Wikidot 렌더러를 따릅니다.
 - format 값은 Wikidot 렌더러에 그대로 전달합니다. [Wikidot 날짜 문법](https://community.wikidot.com/howto:date-how-long-ago)의 예: `%e %b %Y, %H:%M %Z|agohover`, `%O`.
 - format 속성의 큰따옴표는 Wikidot 코드 구문을 깨뜨리므로 입력할 수 없습니다.
 - Wikidot의 날짜 렌더러는 1970년 이전 날짜를 표시하지 않습니다. 해당 날짜의 코드는 생성되지만 미리보기는 비어 있고 경고가 나타납니다.
-- 미리보기는 Wikidot의 외부 JavaScript와 CSS를 불러옵니다. 네트워크나 Wikidot 서버 문제로 스크립트를 불러올 수 없으면 미리보기를 사용할 수 없습니다.
+- 미리보기는 Wikidot의 외부 JavaScript와 CSS를 불러옵니다. 네트워크나 Wikidot 서버 문제로 해당 리소스를 불러올 수 없으면 미리보기를 사용할 수 없습니다.
 
 빌드 과정이나 패키지 설치는 필요하지 않습니다. GitHub Pages에서 배포하려면 저장소 설정의 Pages에서 `main` 브랜치의 루트(`/`)를 게시 대상으로 선택하면 됩니다.
 
-## 출처 및 라이선스
+### 출처 및 라이선스
 
 ErichSteinboeck이 2008년에 공개한 [Wikidot Community Date Wizard](https://community.wikidot.com/howto:date-how-long-ago)를 바탕으로 만든 수정판입니다. 원본 페이지는 [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/)로 제공됩니다. 원본과 비교해 선택 가능한 연도를 1900~2100년으로 확장하고, NOW 버튼·코드 복사 버튼·다크 모드·입력 검증을 추가했습니다. 날짜나 format을 바꾸면 미리보기를 다시 렌더링하도록 수정했습니다.
 
 이 수정판의 코드는 [CC BY-SA 4.0 International](LICENSE)로 배포합니다. Wikidot에서 외부로 불러오는 JavaScript와 CSS는 이 저장소에 포함되지 않으며 각각의 원래 조건이 적용됩니다.
+
+---
+
+<a id="ja"></a>
+## 日本語
+
+> **AI 利用の開示：** このプロジェクトのコードと文書は、AI の支援を受けて作成・修正しました。
+
+### 概要
+
+Wikidot Date Wizard は、選択した日時から Wikidot の `[[date]]` コードを生成するブラウザー用ツールです。プレビューには Wikidot の `OZONE.utils.formatOdate()` を使用します。
+
+### 使い方
+
+Web サーバー経由で `index.html` を開き、日時と書式文字列を入力して、生成されたコードを Wikidot のページに貼り付けます。Unix タイムスタンプへの変換には、**ツールを開いているブラウザーのローカルタイムゾーン**を使用します。
+
+- 書式欄を空にすると、`[[date 1234567890]]` のように `format` 属性なしで生成します。
+- UI は韓国語、英語、日本語、簡体字中国語、デンマーク語、ドイツ語、スペイン語、フランス語、イタリア語、ポーランド語、ロシア語、セルビア語に対応しています。初回はブラウザーの言語を使用し、言語メニューで変更すると選択が保存されます。
+- 相対時間の単位とホバー時の文言には Wikidot の翻訳機能を使用します。そのほかの日付書式や単数・複数の処理は Wikidot のレンダラーに従います。
+- 書式文字列はそのまま Wikidot のレンダラーに渡されます。[Wikidot の日付書式ガイド](https://community.wikidot.com/howto:date-how-long-ago)にある例：`%e %b %Y, %H:%M %Z|agohover`、`%O`。
+- ダブルクォーテーションは生成される Wikidot の属性構文を壊すため、書式欄には入力できません。
+- Wikidot の日付レンダラーは 1970 年より前の日付を表示しません。コードは生成されますが、プレビューは空になり、警告が表示されます。
+- プレビューは Wikidot の外部 JavaScript と CSS を読み込みます。ネットワークや Wikidot のサーバーの問題で読み込めない場合、プレビューは使用できません。
+
+ビルドやパッケージのインストールは不要です。GitHub Pages で公開するには、リポジトリの Pages 設定で `main` ブランチのルート（`/`）を公開元に指定します。
+
+### 出典とライセンス
+
+このプロジェクトは、ErichSteinboeck が 2008 年に公開した [Wikidot Community Date Wizard](https://community.wikidot.com/howto:date-how-long-ago) を基にした改作です。原版のライセンスは [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/) です。原版と比べ、選択可能な年を 1900～2100 年に拡張し、現在日時ボタン、コードのコピーボタン、ダークモード、入力値の検証を追加しました。日時や書式を変更するとプレビューが再描画されます。
+
+この改作のコードは [CC BY-SA 4.0 International](LICENSE) で公開します。外部から読み込む Wikidot の JavaScript と CSS はこのリポジトリには含まれず、それぞれ元の利用条件が適用されます。
+
+---
+
+<a id="zh-cn"></a>
+## 简体中文
+
+> **AI 使用声明：** 本项目的代码和文档在 AI 的辅助下编写和修改。
+
+### 简介
+
+Wikidot Date Wizard 是一款浏览器工具，可根据所选日期和时间生成 Wikidot 的 `[[date]]` 代码。预览使用 Wikidot 的 `OZONE.utils.formatOdate()`。
+
+### 使用方法
+
+通过 Web 服务器打开 `index.html`，选择日期和时间、输入格式字符串，然后将生成的代码复制到 Wikidot 页面。转换 Unix 时间戳时使用**运行本工具的浏览器所在时区**。
+
+- 格式栏留空时，将生成不带 `format` 属性的代码，例如 `[[date 1234567890]]`。
+- 界面支持韩语、英语、日语、简体中文、丹麦语、德语、西班牙语、法语、意大利语、波兰语、俄语和塞尔维亚语。首次使用时采用浏览器语言；通过语言菜单更改后，所选语言会被保存。
+- 相对时间的单位和悬停提示文字通过 Wikidot 的翻译功能显示。其他日期格式及单复数处理遵循 Wikidot 渲染器。
+- 格式字符串会直接传给 Wikidot 渲染器。[Wikidot 日期语法说明](https://community.wikidot.com/howto:date-how-long-ago)中的示例：`%e %b %Y, %H:%M %Z|agohover`、`%O`。
+- 格式栏不能输入英文双引号，因为它会破坏生成代码中的 Wikidot 属性语法。
+- Wikidot 的日期渲染器不显示 1970 年以前的日期。工具仍会生成代码，但预览为空，并显示警告。
+- 预览需要加载 Wikidot 的外部 JavaScript 和 CSS。如果网络或 Wikidot 服务器出现问题，导致这些资源无法加载，预览便不可用。
+
+无需构建或安装软件包。若要通过 GitHub Pages 发布，请在仓库的 Pages 设置中选择 `main` 分支的根目录（`/`）作为发布来源。
+
+### 来源与许可
+
+本项目改编自 ErichSteinboeck 于 2008 年发布的 [Wikidot Community Date Wizard](https://community.wikidot.com/howto:date-how-long-ago)。原版以 [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/) 授权。与原版相比，本工具将可选年份扩展至 1900～2100 年，并添加了“当前时间”按钮、复制代码按钮、深色模式和输入校验。更改日期或格式时，预览会重新渲染。
+
+本改编版代码以 [CC BY-SA 4.0 International](LICENSE) 授权。外部加载的 Wikidot JavaScript 和 CSS 不包含在本仓库中，仍分别受其原有条款约束。
+
+---
+
+<a id="de"></a>
+## Deutsch
+
+> **Hinweis zur KI-Nutzung:** Code und Dokumentation dieses Projekts wurden mit Unterstützung von KI erstellt und überarbeitet.
+
+### Überblick
+
+Wikidot Date Wizard ist ein Browserwerkzeug, das aus einem gewählten Datum und einer Uhrzeit Wikidot-Code für `[[date]]` erzeugt. Für die Vorschau wird Wikidots `OZONE.utils.formatOdate()` verwendet.
+
+### Verwendung
+
+Öffne `index.html` über einen Webserver, wähle Datum und Uhrzeit, gib eine Formatzeichenfolge ein und füge den erzeugten Code in eine Wikidot-Seite ein. Der Unix-Zeitstempel wird anhand **der lokalen Zeitzone des verwendeten Browsers** berechnet.
+
+- Bei leerem Formatfeld wird Code ohne `format`-Attribut erzeugt, etwa `[[date 1234567890]]`.
+- Die Oberfläche unterstützt Koreanisch, Englisch, Japanisch, vereinfachtes Chinesisch, Dänisch, Deutsch, Spanisch, Französisch, Italienisch, Polnisch, Russisch und Serbisch. Zunächst wird die Browsersprache verwendet; eine Änderung im Sprachmenü wird gespeichert.
+- Einheiten für relative Zeitangaben und Texte beim Darüberfahren mit der Maus werden über Wikidots Übersetzungsfunktionen angezeigt. Sonstige Datumsformatierungen sowie Singular- und Pluralformen richten sich nach dem Wikidot-Renderer.
+- Die Formatzeichenfolge wird unverändert an den Wikidot-Renderer übergeben. Beispiele aus der [Wikidot-Datumssyntax](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` und `%O`.
+- Doppelte Anführungszeichen sind im Formatfeld nicht zulässig, da sie die Syntax des erzeugten Wikidot-Attributs beschädigen würden.
+- Der Datumsrenderer von Wikidot zeigt Daten vor 1970 nicht an. Der Code wird dennoch erzeugt; die Vorschau bleibt leer und eine Warnung erscheint.
+- Die Vorschau lädt externes JavaScript und CSS von Wikidot. Wenn diese Ressourcen wegen eines Netzwerk- oder Serverproblems nicht geladen werden können, ist die Vorschau nicht verfügbar.
+
+Ein Build-Schritt oder die Installation von Paketen ist nicht erforderlich. Für die Veröffentlichung über GitHub Pages wähle in den Pages-Einstellungen des Repositorys das Stammverzeichnis (`/`) des Branches `main` als Quelle.
+
+### Herkunft und Lizenz
+
+Dieses Projekt basiert auf dem [Wikidot Community Date Wizard](https://community.wikidot.com/howto:date-how-long-ago), den ErichSteinboeck 2008 unter [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/) veröffentlichte. Gegenüber dem Original wurde der wählbare Jahresbereich auf 1900–2100 erweitert. Außerdem wurden eine Schaltfläche für die aktuelle Zeit, eine Kopierfunktion, ein Dunkelmodus und eine Eingabeprüfung hinzugefügt. Änderungen am Datum oder Format aktualisieren die Vorschau.
+
+Der Code dieser Bearbeitung steht unter [CC BY-SA 4.0 International](LICENSE). Extern eingebundenes JavaScript und CSS von Wikidot sind nicht in diesem Repository enthalten und unterliegen ihren jeweiligen Bedingungen.
+
+---
+
+<a id="fr"></a>
+## Français
+
+> **Déclaration d'utilisation de l'IA :** Le code et la documentation de ce projet ont été rédigés et modifiés avec l'aide de l'IA.
+
+### Présentation
+
+Wikidot Date Wizard est un outil pour navigateur qui génère du code Wikidot `[[date]]` à partir d'une date et d'une heure choisies. L'aperçu utilise `OZONE.utils.formatOdate()` de Wikidot.
+
+### Utilisation
+
+Ouvrez `index.html` depuis un serveur web, choisissez la date et l'heure, saisissez une chaîne de format, puis collez le code généré dans une page Wikidot. L'horodatage Unix est calculé selon **le fuseau horaire local du navigateur utilisé**.
+
+- Si le champ de format est vide, le code est généré sans attribut `format`, par exemple `[[date 1234567890]]`.
+- L'interface prend en charge le coréen, l'anglais, le japonais, le chinois simplifié, le danois, l'allemand, l'espagnol, le français, l'italien, le polonais, le russe et le serbe. Elle utilise d'abord la langue du navigateur ; un changement effectué dans le sélecteur de langue est enregistré.
+- Les unités de temps relatif et les textes affichés au survol utilisent les fonctions de traduction de Wikidot. Les autres formats de date et la gestion du singulier et du pluriel suivent le moteur de rendu de Wikidot.
+- La chaîne de format est transmise directement au moteur de rendu de Wikidot. Exemples tirés du [guide de syntaxe des dates de Wikidot](https://community.wikidot.com/howto:date-how-long-ago) : `%e %b %Y, %H:%M %Z|agohover` et `%O`.
+- Les guillemets doubles sont interdits dans le champ de format, car ils invalideraient la syntaxe de l'attribut Wikidot généré.
+- Le moteur de rendu des dates de Wikidot n'affiche pas les dates antérieures à 1970. Le code est tout de même généré, mais l'aperçu reste vide et un avertissement apparaît.
+- L'aperçu charge des fichiers JavaScript et CSS externes de Wikidot. Il est indisponible si ces ressources ne peuvent pas être chargées à cause d'un problème de réseau ou de serveur Wikidot.
+
+Aucune compilation ni installation de paquet n'est nécessaire. Pour publier avec GitHub Pages, sélectionnez la racine (`/`) de la branche `main` comme source dans les paramètres Pages du dépôt.
+
+### Origine et licence
+
+Ce projet est une adaptation du [Wikidot Community Date Wizard](https://community.wikidot.com/howto:date-how-long-ago), publié par ErichSteinboeck en 2008 sous licence [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). Par rapport à l'original, la plage des années disponibles a été étendue à 1900–2100 et un bouton pour l'heure actuelle, un bouton de copie, un mode sombre et une validation des saisies ont été ajoutés. L'aperçu est actualisé lorsque la date ou le format change.
+
+Le code de cette adaptation est distribué sous licence [CC BY-SA 4.0 International](LICENSE). Les fichiers JavaScript et CSS externes de Wikidot ne sont pas inclus dans ce dépôt et restent soumis à leurs propres conditions.
+
+---
+
+<a id="es"></a>
+## Español
+
+> **Aviso sobre el uso de IA:** El código y la documentación de este proyecto se redactaron y modificaron con ayuda de IA.
+
+### Descripción
+
+Wikidot Date Wizard es una herramienta para el navegador que genera código `[[date]]` de Wikidot a partir de la fecha y la hora seleccionadas. La vista previa utiliza `OZONE.utils.formatOdate()` de Wikidot.
+
+### Uso
+
+Abre `index.html` desde un servidor web, selecciona la fecha y la hora, introduce una cadena de formato y pega el código generado en una página de Wikidot. La marca de tiempo Unix se calcula según **la zona horaria local del navegador en el que se utiliza la herramienta**.
+
+- Si dejas vacío el campo de formato, se genera código sin el atributo `format`, como `[[date 1234567890]]`.
+- La interfaz está disponible en coreano, inglés, japonés, chino simplificado, danés, alemán, español, francés, italiano, polaco, ruso y serbio. Al principio usa el idioma del navegador; si lo cambias en el selector, la elección se guarda.
+- Las unidades de tiempo relativo y los textos que aparecen al pasar el cursor se muestran mediante las funciones de traducción de Wikidot. Los demás formatos de fecha y el tratamiento de singular y plural dependen del renderizador de Wikidot.
+- La cadena de formato se envía directamente al renderizador de Wikidot. Ejemplos de la [guía de sintaxis de fechas de Wikidot](https://community.wikidot.com/howto:date-how-long-ago): `%e %b %Y, %H:%M %Z|agohover` y `%O`.
+- No se permiten comillas dobles en el campo de formato porque romperían la sintaxis del atributo de Wikidot generado.
+- El renderizador de fechas de Wikidot no muestra fechas anteriores a 1970. El código se genera igualmente, pero la vista previa queda vacía y aparece una advertencia.
+- La vista previa carga JavaScript y CSS externos de Wikidot. No funcionará si un problema de red o del servidor de Wikidot impide cargar esos recursos.
+
+No se necesita compilar ni instalar paquetes. Para publicar con GitHub Pages, selecciona la raíz (`/`) de la rama `main` como origen en la configuración de Pages del repositorio.
+
+### Origen y licencia
+
+Este proyecto es una adaptación del [Wikidot Community Date Wizard](https://community.wikidot.com/howto:date-how-long-ago), publicado por ErichSteinboeck en 2008 con licencia [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/). En comparación con el original, amplía el intervalo de años seleccionables a 1900–2100 y añade un botón para la hora actual, un botón para copiar, un modo oscuro y validación de entradas. La vista previa se actualiza cuando cambia la fecha o el formato.
+
+El código de esta adaptación se distribuye bajo [CC BY-SA 4.0 International](LICENSE). El JavaScript y el CSS externos de Wikidot no se incluyen en este repositorio y conservan sus propias condiciones de uso.
