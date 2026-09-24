@@ -3,62 +3,63 @@
 
 :root {
     color-scheme: light;
-    --surface: #faf9f6;
-    --surface-subtle: #f0eee9;
-    --input-bg: #fff;
-    --text-main: #242923;
-    --text-muted: #4d5a4e;
-    --border: #b8c1b6;
-    --accent: #547258;
-    --code-text: #36563e;
-    --button-bg: #365d44;
-    --button-hover: #294c36;
+    --page: #f2f4f7;
+    --surface: #fff;
+    --surface-subtle: #edf1f5;
+    --text-main: #17202b;
+    --text-muted: #485463;
+    --border: #7b8794;
+    --accent: #b83b26;
+    --button-hover: #942e1d;
     --button-text: #fff;
-    --tooltip-bg: #fffdf8;
-    --tooltip-text: #242923;
-    --tooltip-border: #97a493;
-    --focus: #365d44;
-    --shadow: 0 4px 15px rgba(36, 41, 35, 0.08);
+    --code-bg: #17202b;
+    --code-text: #f4f6f8;
+    --code-accent: #ff866b;
+    --tooltip-bg: #fff;
+    --tooltip-text: #17202b;
+    --focus: #b83b26;
+    --shadow: 0 12px 36px rgb(23 32 43 / 8%);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         color-scheme: dark;
-        --surface: #1e241f;
-        --surface-subtle: #2a322b;
-        --input-bg: #202820;
-        --text-main: #f1f4ed;
-        --text-muted: #bfccbd;
-        --border: #718271;
-        --accent: #a9c9aa;
-        --code-text: #c9e8c9;
-        --button-bg: #b7d6b6;
-        --button-hover: #cbe5c9;
-        --button-text: #17251a;
-        --tooltip-bg: #303b32;
-        --tooltip-text: #f3f7f0;
-        --tooltip-border: #91ac94;
-        --focus: #c9e9ca;
-        --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        --page: #10161d;
+        --surface: #1b2530;
+        --surface-subtle: #243240;
+        --text-main: #f4f6f8;
+        --text-muted: #b9c4cf;
+        --border: #8c9aa8;
+        --accent: #ff866b;
+        --button-hover: #ffae95;
+        --button-text: #171c24;
+        --code-bg: #10161d;
+        --code-text: #f4f6f8;
+        --code-accent: #ff866b;
+        --tooltip-bg: #243240;
+        --tooltip-text: #f4f6f8;
+        --focus: #ff866b;
+        --shadow: 0 12px 36px rgb(0 0 0 / 25%);
     }
 }
 
 body {
     font-family: 'Noto Sans KR', 'Noto Sans JP', sans-serif;
-    background: transparent;
+    background: var(--page);
     color: var(--text-main);
     margin: 0;
-    padding: 10px;
+    padding: clamp(12px, 3vw, 32px);
 }
 
 .container {
     box-sizing: border-box;
-    max-width: 100%;
-    padding: 24px;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: clamp(20px, 4vw, 36px);
     background: var(--surface);
     color: var(--text-main);
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 18px;
     box-shadow: var(--shadow);
 }
 
@@ -68,26 +69,17 @@ body {
     align-items: flex-start;
     justify-content: space-between;
     gap: 16px;
-    margin-bottom: 22px;
+    margin-bottom: 32px;
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: clamp(1.25rem, 2.5vw, 1.7rem);
+    line-height: 1.35;
+    letter-spacing: -0.03em;
     margin: 0;
-    padding-bottom: 10px;
+    padding-left: 16px;
     font-weight: 700;
-    position: relative;
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 2px;
+    border-left: 4px solid var(--accent);
 }
 
 .language-control {
@@ -97,23 +89,47 @@ h2::after {
 }
 
 .language-control label { margin: 0; white-space: nowrap; }
-.language-control select { min-width: 100px; }
-.group { margin-bottom: 20px; }
+.language-control select { min-width: 120px; }
+.group { margin-bottom: 26px; }
 
-label {
+label, .section-label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 9px;
     color: var(--text-muted);
     font-size: 0.85rem;
     font-weight: 700;
 }
 
+.label-with-icon {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    direction: ltr;
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}
+
+.label-with-icon .material-symbols-outlined { color: var(--accent); }
 .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .separator { color: var(--text-muted); margin: 0 5px; }
 
 select, input {
+    min-height: 40px;
+    box-sizing: border-box;
     padding: 8px 12px;
-    background: var(--input-bg);
+    background: var(--surface);
     color: var(--text-main);
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -121,7 +137,7 @@ select, input {
     font-size: 14px;
 }
 
-input[type='text'] { width: 100%; box-sizing: border-box; }
+input[type='text'] { width: 100%; }
 
 button {
     cursor: pointer;
@@ -132,36 +148,61 @@ button {
 }
 
 .btn-now {
-    padding: 9px 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 40px;
+    padding: 8px 14px;
     background: var(--surface-subtle);
     color: var(--text-main);
     border: 1px solid var(--border);
     white-space: nowrap;
 }
 
-.btn-now:hover { background: var(--input-bg); }
+.btn-now:hover { background: var(--surface); }
+.btn-now .material-symbols-outlined { font-size: 18px; }
+
+.preview-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--surface);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px 12px 12px 8px;
+}
+
+.section-label { font-size: 0.78rem; letter-spacing: 0.02em; }
+#preview-text { min-height: 1.5em; color: var(--text-main); font-size: 16px; }
+.preview-box .odate { color: var(--text-main); font-size: 16px; }
 
 .result-area {
-    margin-top: 20px;
-    padding: 18px;
-    background: var(--surface-subtle);
-    border: 1px solid var(--border);
-    border-radius: 10px;
+    margin-top: 14px;
+    padding: 20px;
+    background: var(--code-bg);
+    color: var(--code-text);
+    border-radius: 12px;
 }
+
+.result-area .section-label { color: var(--code-text); }
+.result-area .label-with-icon .material-symbols-outlined { color: var(--code-accent); }
 
 .code-display {
     display: block;
+    min-height: 1.5em;
     padding: 14px;
-    background: var(--input-bg);
+    background: var(--code-bg);
     color: var(--code-text);
     border: 1px solid var(--border);
     border-radius: 8px;
     font-family: Consolas, Monaco, monospace;
     font-size: 13px;
-    word-break: break-all;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
-.result-actions { display: flex; justify-content: flex-end; margin-top: 12px; }
+.result-actions { display: flex; justify-content: flex-end; margin-top: 14px; }
 
 .btn-copy {
     display: inline-flex;
@@ -170,38 +211,27 @@ button {
     gap: 8px;
     min-height: 42px;
     padding: 9px 17px;
-    background: var(--button-bg);
+    background: var(--accent);
     color: var(--button-text);
-    border: 1px solid var(--button-bg);
+    border: 1px solid var(--accent);
 }
 
+.btn-copy .material-symbols-outlined { font-size: 18px; }
 .btn-copy:hover { background: var(--button-hover); border-color: var(--button-hover); }
 .btn-copy:disabled { opacity: 0.55; cursor: not-allowed; }
-
-.preview-box {
-    margin-top: 15px;
-    padding: 15px;
-    background: var(--surface-subtle);
-    border-left: 4px solid var(--accent);
-    border-radius: 4px 10px 10px 4px;
-}
-
-.section-label { font-size: 0.75rem; margin-bottom: 6px; }
-#preview-text { min-height: 1.5em; color: var(--text-main); font-size: 15px; }
-.preview-box .odate { color: var(--text-main); font-size: 15px; }
 
 /* Wikidot appends hover tips to the body, outside the preview box. */
 #odialog-hovertips .hovertip {
     background: var(--tooltip-bg) !important;
     color: var(--tooltip-text) !important;
-    border: 1px solid var(--tooltip-border) !important;
-    border-radius: 7px;
+    border: 1px solid var(--border) !important;
+    border-radius: 8px;
     box-shadow: var(--shadow);
 }
 
 #odialog-hovertips .hovertip .content {
     padding: 6px 9px;
-    background: transparent !important;
+    background: var(--tooltip-bg) !important;
     color: var(--tooltip-text) !important;
 }
 
@@ -215,7 +245,7 @@ button {
     padding: 10px 20px;
     background: var(--tooltip-bg);
     color: var(--tooltip-text);
-    border: 1px solid var(--tooltip-border);
+    border: 1px solid var(--border);
     border-radius: 8px;
     box-shadow: var(--shadow);
     font-size: 13px;
@@ -231,8 +261,9 @@ select:focus-visible, input:focus-visible, button:focus-visible {
 }
 
 @media (max-width: 480px) {
-    .container { padding: 16px; }
-    .header { align-items: flex-start; }
+    .header { margin-bottom: 26px; }
     .language-control { flex-direction: column; align-items: flex-start; gap: 4px; margin-left: auto; }
     .controls { gap: 6px; }
+    .result-actions { justify-content: stretch; }
+    .btn-copy { width: 100%; }
 }
