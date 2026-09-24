@@ -139,6 +139,44 @@ select, input {
 
 input[type='text'] { width: 100%; }
 
+.format-tools {
+    display: grid;
+    gap: 10px;
+    margin-top: 10px;
+    padding: 12px;
+    background: var(--surface-subtle);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.format-tool-row {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    align-items: center;
+    gap: 10px;
+}
+
+.format-tool-label {
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.format-token-buttons { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.format-token {
+    min-height: 36px;
+    padding: 6px 10px;
+    background: var(--surface);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    font-family: Consolas, Monaco, monospace;
+    font-size: 13px;
+}
+
+.format-token:hover { border-color: var(--accent); }
+.format-token[aria-pressed='true'] { border-color: var(--accent); color: var(--accent); }
+
 button {
     cursor: pointer;
     border-radius: 8px;
@@ -264,6 +302,7 @@ select:focus-visible, input:focus-visible, button:focus-visible {
     .header { margin-bottom: 26px; }
     .language-control { flex-direction: column; align-items: flex-start; gap: 4px; margin-left: auto; }
     .controls { gap: 6px; }
+    .format-tool-row { grid-template-columns: 1fr; gap: 5px; }
     .result-actions { justify-content: stretch; }
     .btn-copy { width: 100%; }
 }
