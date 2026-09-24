@@ -1,0 +1,149 @@
+@import url('https://community.wikidot.com/common--theme/base/css/style.css');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
+
+        :root {
+            --bg-container: rgba(255, 255, 255, 0.9);
+            --text-main: #333;
+            --text-muted: #666;
+            --border-color: #ddd;
+            --input-bg: #fff;
+            --card-bg: #fdfdfd;
+            --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --btn-secondary: #f0f0f0;
+            --shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-container: rgba(30, 32, 35, 0.95);
+                --text-main: #e0e0e0;
+                --text-muted: #aaa;
+                --border-color: #444;
+                --input-bg: #2a2d31;
+                --card-bg: #25282c;
+                --btn-secondary: #3a3f44;
+                --shadow: 0 4px 15px rgba(0,0,0,0.3);
+            }
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: transparent;
+            margin: 0;
+            padding: 10px;
+            color: var(--text-main);
+            height: auto;
+        }
+
+        .container {
+            max-width: 100%;
+            background: var(--bg-container);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-weight: 700;
+            display: inline-block;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        .group { margin-bottom: 20px; }
+        label { display: block; font-weight: 700; font-size: 0.85rem; margin-bottom: 8px; color: var(--text-muted); text-transform: uppercase; }
+
+        .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+        
+        select, input {
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: var(--input-bg);
+            color: var(--text-main);
+            font-family: inherit;
+            outline: none;
+        }
+
+        input[type="text"] { width: 100%; box-sizing: border-box; border: 1px solid var(--border-color); }
+
+        button {
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            padding: 9px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-now { background-color: var(--btn-secondary); color: var(--text-main); }
+        .btn-copy {
+            background: var(--accent-gradient);
+            color: white;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 15px;
+            padding: 14px;
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
+        }
+
+        .result-area {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 18px;
+            margin-top: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .code-display {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            background: var(--input-bg);
+            padding: 14px;
+            border-radius: 8px;
+            display: block;
+            word-break: break-all;
+            color: #4facfe;
+            border: 1px solid var(--border-color);
+        }
+
+        .preview-box {
+            margin-top: 15px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-left: 4px solid #4facfe;
+            border-radius: 4px 10px 10px 4px;
+        }
+
+        #preview-text { font-size: 15px; color: var(--text-main); min-height: 1.5em; }
+
+
+        .toast {
+            position: fixed; top: 30px; left: 50%; transform: translateX(-50%);
+            background: var(--text-main); color: var(--input-bg); padding: 10px 30px;
+            border-radius: 50px; font-size: 13px; font-weight: 700; display: none; z-index: 1000;
+        }
+    
+        .error { color: #b42318; font-size: 13px; margin-top: 7px; }
+        @media (prefers-color-scheme: dark) { .error { color: #ffaaa4; } }
+        .preview-box .odate { font-size: 15px; color: var(--text-main); }
+        .controls button { white-space: nowrap; }
+        select:focus-visible, input:focus-visible, button:focus-visible { outline: 2px solid #1475ad; outline-offset: 2px; }
+        @media (max-width: 480px) { .container { padding: 16px; } .controls { gap: 6px; } }
