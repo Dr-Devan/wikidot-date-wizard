@@ -52,12 +52,18 @@ function updateDays() {
     els.day.value = Math.min(selectedDay, lastDay);
 }
 
+function clearPreview() {
+    els.preview.firstElementChild?.hovertip?.remove();
+    els.preview.replaceChildren();
+}
+
 function updatePreview(timestamp, format) {
     // Wikidot marks a processed node in jQuery data. Create a fresh node for each update.
     const date = document.createElement('span');
     date.className = 'odate';
     date.textContent = format ? `${timestamp}|${format}` : String(timestamp);
-    els.preview.replaceChildren(date);
+    clearPreview();
+    els.preview.append(date);
 
     if (window.OZONE?.utils?.formatOdate) {
         OZONE.request.timestamp = Math.floor(Date.now() / 1000);
@@ -84,7 +90,7 @@ function update() {
             ? '이 시간은 현재 시간대에 존재하지 않습니다.'
             : 'Wikidot의 format 속성에는 큰따옴표를 사용할 수 없습니다.';
         els.result.textContent = '';
-        els.preview.replaceChildren();
+        clearPreview();
         els.copy.disabled = true;
         return;
     }
@@ -96,7 +102,7 @@ function update() {
         : `[[date ${timestamp}]]`;
     els.copy.disabled = false;
     if (timestamp < 0) {
-        els.preview.replaceChildren();
+        clearPreview();
     } else {
         updatePreview(timestamp, format);
     }
