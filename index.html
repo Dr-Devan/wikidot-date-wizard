@@ -4,16 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wikidot Date Generator</title>
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="style.css?v=6">
     <script src="https://community.wikidot.com/common--javascript/init.combined.js"></script>
-    <script src="script.js?v=5" defer></script>
+    <script src="script.js?v=6" defer></script>
 </head>
 <body id="html-body">
 <main class="container">
     <header class="header">
         <h2 id="title">Wikidot Date Generator</h2>
         <div class="language-control">
-            <label id="language-label" for="language">Language</label>
+            <label for="language"><span id="language-label">Language</span></label>
             <select id="language" aria-label="Language">
                 <option value="ko">한국어</option>
                 <option value="en">English</option>
@@ -32,34 +33,34 @@
     </header>
 
     <div class="group">
-        <label id="date-label" for="year">Set Date &amp; Time</label>
+        <label class="label-with-icon" for="year"><span class="material-symbols-outlined" aria-hidden="true">calendar_month</span><span id="date-label">Set Date &amp; Time</span></label>
         <div class="controls">
             <select id="year" aria-label="Year"></select>
             <select id="month" aria-label="Month"></select>
             <select id="day" aria-label="Day"></select>
             <span class="separator" aria-hidden="true">|</span>
             <select id="hour" aria-label="Hour"></select> : <select id="minute" aria-label="Minute"></select>
-            <button class="btn-now" id="now" type="button">NOW</button>
+            <button class="btn-now" id="now" type="button"><span class="material-symbols-outlined" aria-hidden="true">schedule</span><span id="now-label">NOW</span></button>
         </div>
     </div>
 
     <div class="group">
-        <label id="format-label" for="format">Format String</label>
+        <label class="label-with-icon" for="format"><span class="material-symbols-outlined" aria-hidden="true">tune</span><span id="format-label">Format String</span></label>
         <input type="text" id="format" value="%Y. %m. %d|agohover" aria-describedby="error">
         <div id="error" class="error" role="status" aria-live="polite"></div>
     </div>
 
     <div class="preview-box">
-        <label id="preview-label" class="section-label">PREVIEW</label>
+        <div class="section-label label-with-icon"><span class="material-symbols-outlined" aria-hidden="true">visibility</span><span id="preview-label">PREVIEW</span></div>
         <div id="preview-text" aria-live="polite"></div>
     </div>
 
     <div class="result-area">
-        <label id="code-label">Wikidot Code</label>
+        <div class="section-label label-with-icon"><span class="material-symbols-outlined" aria-hidden="true">code</span><span id="code-label">Wikidot Code</span></div>
         <code class="code-display" id="result-code"></code>
         <div class="result-actions">
             <button class="btn-copy" id="copy" type="button">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+                <span class="material-symbols-outlined" aria-hidden="true">content_copy</span>
                 <span id="copy-label">Copy code</span>
             </button>
         </div>
