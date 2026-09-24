@@ -248,7 +248,7 @@ function setLanguage(next) {
     const labels = {
         title: t.title, 'language-label': t.language, 'date-label': t.date,
         'format-label': t.format, 'preview-label': t.preview,
-        'code-label': t.code, 'copy-label': t.copy, now: t.now
+        'code-label': t.code, 'copy-label': t.copy, 'now-label': t.now
     };
     for (const [id, value] of Object.entries(labels)) document.getElementById(id).textContent = value;
     for (const field of ['year', 'month', 'day', 'hour', 'minute']) {
